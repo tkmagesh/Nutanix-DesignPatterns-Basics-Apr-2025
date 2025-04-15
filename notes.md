@@ -36,3 +36,12 @@ go build <filename.go>
 ```
 
 
+## Single Reponsibility Principle
+Every entity must have ONLY ONE reason to change
+
+## Dependency Inversion Principle
+Creation & usage must be separated
+
+## Open Closed Principle
+Open for extension but closed for modification
+
