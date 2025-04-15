@@ -64,12 +64,17 @@ type ShoppingCart struct {
 }
 
 func (sc *ShoppingCart) AddItem(p *Product, units int) {
+	// create a new line item for the given product
 	newLineItem := NewLineItem(p, units)
+
+	// add the line item to the cart
 	sc.LineItems = append(sc.LineItems, newLineItem)
 }
 
 func (sc ShoppingCart) GetCartValue() float64 {
 	var cartValue float64
+
+	// aggregate the item value for each line item
 	for _, li := range sc.LineItems {
 		cartValue += li.GetItemValue()
 	}
