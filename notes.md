@@ -48,3 +48,10 @@ Open for extension but closed for modification
 - new()
 - if-else / switch-case
 
+## Recommended Books
+- Head First OOAD
+- Agile Principles Patterns and Practices
+- Head First Design Patterns
+- Refactoring to Pattern
+- Growing Object Oriented Software Guided By Tests
+
