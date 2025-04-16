@@ -94,9 +94,49 @@ func NewSlackNotifier(handle string) *SlackNotifier {
 	}
 }
 
+/* Treat the above code as frozen */
+
+/* Add a new notifier (WhatApp) */
+type WhatAppNotifier struct {
+	phoneNo string
+}
+
+// INotifier interface implementation
+func (whatAppNotifier *WhatAppNotifier) Send(msg string) {
+	fmt.Printf("WhatsApp Notification [%s]: %q", whatAppNotifier.phoneNo, msg)
+}
+
+func NewWhatAppNotifier(phoneNo string) *WhatAppNotifier {
+	return &WhatAppNotifier{
+		phoneNo: phoneNo,
+	}
+}
+
+type EnhancedNotifierFactory struct {
+	NotifierFactory
+}
+
+func (enf *EnhancedNotifierFactory) CreateNotifier(medium string) INotifier {
+	var notifier INotifier
+	switch medium {
+	case "WhatsApp":
+		notifier = NewWhatAppNotifier("999-888-7777")
+	default:
+		notifier = enf.NotifierFactory.CreateNotifier(medium)
+	}
+	return notifier
+}
+
+func NewEnhancedNotifierFactory() *EnhancedNotifierFactory {
+	return &EnhancedNotifierFactory{}
+}
+
 /* Email, SMS, Slack */
 func main() {
-	notifierFactory := NewNotifierFactory()
-	app := NewApp("Slack", notifierFactory)
+	// notifierFactory := NewNotifierFactory()
+	notifierFactory := NewEnhancedNotifierFactory()
+	// app := NewApp("Slack", notifierFactory)
+	// app := NewApp("WhatsApp", notifierFactory)
+	app := NewApp("SMS", notifierFactory)
 	app.DoWork()
 }
