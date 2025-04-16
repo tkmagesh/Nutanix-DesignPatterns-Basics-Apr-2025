@@ -5,7 +5,7 @@ class Pizza:
         self.toppings = toppings or []
 
     def __repr__(self):
-        return f"Pizza(dough={self.dough}, sauce={self.sauce}, toppings={self.toppings})"
+        return f"Pizza(dough='{self.dough}', sauce='{self.sauce}', toppings={self.toppings})"
 
 # Builder
 class PizzaBuilder:
@@ -38,3 +38,6 @@ if __name__ == "__main__":
         .build()
     )
     print(pizza)
+    """ pizza2 = eval("Pizza(dough='Thin Crust', sauce='Tomato', toppings=['Cheese', 'Olives'])")
+    print(pizza2) """
+    
