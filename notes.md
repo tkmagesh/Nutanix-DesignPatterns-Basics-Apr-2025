@@ -45,3 +45,6 @@ Creation & usage must be separated
 ## Open Closed Principle
 Open for extension but closed for modification
 
+- new()
+- if-else / switch-case
+
