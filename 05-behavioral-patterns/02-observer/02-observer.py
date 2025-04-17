@@ -1,9 +1,11 @@
 from typing import List
 
+# Abstraction
 class Observer:
     def update(self, message: str):
         pass
 
+# Abstraction
 class Subject:
     def __init__(self):
         self._observers: List[Observer] = []
